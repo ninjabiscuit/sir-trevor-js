@@ -142,26 +142,21 @@ _.extend(Block.prototype, FunctionBind, {
 
   /* Save the state of this block onto the blocks data attr */
   save: function() {
-    var data = this.getData();
-    
-    if (_.isUndefined(data)) {
+    if (_.isUndefined(this.data)) {
       // Create our data object on the element
-      this.$el.data('block', this.to_json());
+      this.data = {};
     } else {
       // We need to grab the state and save it here.
       this.toData();
     }
-    return this.getData();
+    return this.data;
   },
   
   getData: function() {
-    return this.$el.data('block');
+    return this.data;
   },
   
   setData: function(data) {
-    var dataObj = this.getData();
-    dataObj.data = data;
-    // Update our static reference too
     this.data = data;
   },
   
@@ -198,8 +193,6 @@ _.extend(Block.prototype, FunctionBind, {
     var fields = this.$$('.required, [data-maxlength]'),
         errors = 0;
     
-    console.log(fields);
-        
     _.each(fields, _.bind(function(field) {
       field = $(field);
       var content = (field.attr('contenteditable')) ? field.text() : field.val(),

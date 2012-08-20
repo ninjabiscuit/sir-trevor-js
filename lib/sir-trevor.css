@@ -513,3 +513,13 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 .media .img {float:left; margin-right: 20px;}
 .media .img img{display:block;}
 .media .imgExt{float:right; margin-left: 20px;}
+
+
+.sir-trevor .extended_input {
+  position: relative;
+}
+
+.sir-trevor .extended_input .count {
+  font-size: 11px;
+  margin: 0 0 0 5px;
+}

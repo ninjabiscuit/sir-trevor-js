@@ -48,13 +48,14 @@ SirTrevor.Blocks.Gallery = SirTrevor.Block.extend({
         if (confirm('Are you sure you wish to delete this image?')) {
           $(e.target).parent().remove();
         
-          var dataStruct = this.$el.data('block');
-          dataStruct.data = [];
+          var dataStruct = []; // Reset
         
           _.each(this.$('li.gallery-item'), function(li){
             li = $(li);
-            dataStruct.data.push(li.data('block'));
+            dataStruct.push(li.data('block'));
           });
+          
+          this.setData(dataStruct);
         }
       }, this)
     }));
@@ -110,13 +111,14 @@ SirTrevor.Blocks.Gallery = SirTrevor.Block.extend({
         }
         
         // Reindex the data
-        var dataStruct = this.$el.data('block');
-        dataStruct.data = [];
+         var dataStruct = []; // Reset
         
-        _.each(this.$$('li.gallery-item'), function(li){
+        _.each(this.$('li.gallery-item'), function(li){
           li = $(li);
-          dataStruct.data.push(li.data('block'));
+          dataStruct.push(li.data('block'));
         });
+          
+        this.setData(dataStruct);
                 
       }, this));
   },
@@ -150,15 +152,18 @@ SirTrevor.Blocks.Gallery = SirTrevor.Block.extend({
           this.uploadAttachment(file, function(data){
             
             this.uploadsCount -= 1;
-            var dataStruct = this.$el.data('block');
+            
+            // Add data
+            var dataStruct = this.data;
             data = { type: "image", data: data };
             
             // Add to our struct
-            if (!_.isArray(dataStruct.data)) {
-              dataStruct.data = [];
+            if (!_.isArray(dataStruct)) {
+              dataStruct = [];
             }
-            dataStruct.data.push(data);
-            this.$el.data('block',dataStruct);
+            
+            dataStruct.push(data);
+            this.setData(dataStruct);
             
             // Pass this off to our render gallery thumb method
             this.renderGalleryThumb(data);
