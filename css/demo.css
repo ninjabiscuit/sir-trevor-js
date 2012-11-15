@@ -1,0 +1,326 @@
+/* verical align */
+
+.vertical-align {
+  text-align:center;
+}
+
+.vertical-align:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.vertical-align-content {
+  display: inline-block;
+  vertical-align: middle;
+  width:90%;
+}
+
+/* layout */
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	min-width:300px;
+	color:#333;
+	font-size:14px;
+}
+
+h1, h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+h1 {
+	font-size:46px;
+  margin-bottom:6px;
+}
+
+h2 {
+	font-size:32px;
+  margin-bottom:22px;
+}
+
+h3 {
+  font-size:28px;
+  margin-bottom:24px;
+}
+
+.site-header {
+	height:400px;
+	background:#262a2d;
+	color:#fff;
+	text-align:center;
+  margin-bottom:60px;
+}
+
+.site-header p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size:32px;
+  margin-bottom:28px;
+}
+
+.btn {
+	background:#42aedb;
+	line-height:67px;
+	display:inline-block;
+	padding:0 40px;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius:    3px;
+  border-radius: 				 3px;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip:    padding;
+  background-clip:         padding-box;
+
+  -webkit-box-shadow: 1px 2px #0a0c0d;
+  -moz-box-shadow:    1px 2px #0a0c0d;
+  box-shadow:         1px 2px #0a0c0d;
+
+	font-family: Arial, sans-serif;
+	font-size:22px;
+	color:#fff;
+	text-decoration:none;
+	position:relative;
+
+  border:0;
+}
+
+.btn:active,
+.btn:hover {
+	top:2px;
+	left:1px;
+
+	-webkit-box-shadow: none;
+  -moz-box-shadow:    none;
+  box-shadow:         none;
+}
+
+.output-btn {
+  font-size: 18px;
+  line-height: 55px;
+  padding: 0 28px;
+  box-shadow: 1px 2px #d9d9d9;
+  margin: 0 auto;
+  display: block;
+}
+
+.output {
+
+	font-family: "Monaco", "Courier New";
+	padding:30px;
+	background:#f5f5f5;
+
+	width:100%;
+	overflow:scroll;
+
+	border: 1px solid #e3e3e3;
+
+	-webkit-border-radius: 5px;
+  -moz-border-radius:    5px;
+  border-radius: 				 5px;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip:    padding;
+  background-clip:         padding-box;
+
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,.15);
+  -moz-box-shadow:    0 0 3px rgba(0,0,0,.15);
+  box-shadow:         0 0 3px rgba(0,0,0,.15);
+
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -ms-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+
+  word-break: break-all;
+}
+
+.highlighted {
+	background: #F5F297;
+}
+
+.site-footer {
+  background:#d6f0fb;
+  padding: 52px 0;
+}
+
+.site-footer .contained {
+  border-bottom:1px solid #c0d7e1;
+  padding-bottom:7px;
+  margin-bottom:40px;
+}
+
+.dot-list li {
+  list-style:none;
+  font-size:20px;
+  line-height:1.6;
+  margin:0 10% 20px 15px;
+}
+
+.dot-list li:before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #333;
+  margin: 0 10px 4px -13px;
+}
+
+.github-link {
+  clear:both;
+  font-size:26px;
+  line-height:36px;
+  text-align:center;
+  text-align: center;
+  max-width:800px;
+  margin: 0 auto;
+}
+
+a {
+  color:#42aedb;
+}
+
+.example-block .span-six {
+  margin-bottom:150px;
+}
+
+.github-logo {
+  display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0;
+  background:#fff url("../images/github.png") center;
+  width:100px;
+  height:44px;
+  margin:67px auto;
+}
+
+@media (max-width: 600px) {
+
+  .site-footer .span-four, .example-block .span-six {
+    float:none;
+    width:auto;
+  }
+
+  .example-block .span-six {
+    margin-bottom:50px;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .site-header .btn {
+    padding:0 20px;
+  }
+}
+
+/* sir trevor overrides */
+
+.sir-trevor .sir-trevor-marker .buttons a.new-block-quote {
+  background-image: url(../images/sir-trevor/icons/block_editor_blockquote.png);
+}
+
+.sir-trevor .sir-trevor-marker .buttons a.new-image,
+.sir-trevor .sir-trevor-marker .buttons a.new-gallery {
+  background-image: url(../images/sir-trevor/icons/block_editor_image.png);
+}
+
+.sir-trevor .sir-trevor-marker .buttons a.new-text {
+  background-image: url(../images/sir-trevor/icons/block_editor_text.png);
+}
+
+.sir-trevor .sir-trevor-marker .buttons a.new-list {
+  background-image: url(../images/sir-trevor/icons/block_editor_list.png);
+}
+
+.sir-trevor .sir-trevor-marker .buttons a.new-tweet {
+  background-image: url(../images/sir-trevor/icons/block_editor_tweet.png);
+}
+
+.sir-trevor .sir-trevor-marker .buttons a.new-video {
+  background-image: url(../images/sir-trevor/icons/block_editor_video.png);
+}
+
+.sir-trevor .dropzone.tweet-block p {
+  background-image: url(../images/sir-trevor/icons/new_tweet.png);
+}
+
+.sir-trevor .dropzone.image-block p,
+.sir-trevor .dropzone.gallery-block p  {
+  background-image: url(../images/sir-trevor/icons/new_image.png);
+}
+
+.sir-trevor .dropzone.video-block p,
+.sir-trevor .dropzone.video-block p  {
+  background-image: url(../images/sir-trevor/icons/new_video.png);
+}
+
+.sir-trevor .sir-trevor-block .delete {
+  background-image:url(../images/sir-trevor/icons/close.gif);
+}
+
+.sir-trevor .sir-trevor-block .handle {
+	background-image:url(../images/sir-trevor/icons/handle.gif);
+	width:25px;
+	background-position: center;
+	border-radius: 5px 0 0 5px;
+}
+
+.sir-trevor .sir-trevor-block .handle:before,
+.sir-trevor .sir-trevor-block .handle:after {
+	content:"";
+	background-color:#606060;
+	width:20px;
+	height:10px;
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.sir-trevor .sir-trevor-block .handle:after {
+	top:auto;
+	bottom:0;
+}
+
+.sir-trevor-formatting-control .format-button {
+	font-size:14px;
+	background:#b2b2b2;
+	border:0;
+}
+
+.sir-trevor-formatting-control .format-button:hover {
+	border:0;
+}
+
+.sir-trevor .sir-trevor-marker {
+	background: #f5f5f5;
+	border: 0;
+
+	-webkit-border-radius: 5px;
+  -moz-border-radius:    5px;
+  border-radius: 				 5px;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip:    padding;
+  background-clip:         padding-box;
+}
+
+.sir-trevor .sir-trevor-marker p {
+	display:none;
+}
+
+.sir-trevor .sir-trevor-marker .buttons a,
+.sir-trevor .sir-trevor-marker .buttons a:last-child {
+	border:0;
+	color: #383838;
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+}
+
+.sir-trevor .dropzone.video-block p, .sir-trevor .dropzone.video-block p {
+  line-height: 25px;
+  font-size:15px;
+}

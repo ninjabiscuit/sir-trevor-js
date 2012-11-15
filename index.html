@@ -9,48 +9,120 @@
   <title>Sir Trevor JS - Example</title>
   <meta name="description" content="Sir Trevor JS example">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="base.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="sir-trevor.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="css/sir-trevor.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="css/demo.css" type="text/css" media="screen">
 </head>
 <body>
-  <div id="wrapper">
-    <h1>Sir Trevor JS</h1>
-    <p>
-      For a full rundown of what Sir Trevor is, checkout the repository at: <a href="https://github.com/madebymany/sir-trevor-js/">https://github.com/madebymany/sir-trevor-js/</a>.
-    </p>
-    <form id="example">
-      <textarea class="sir-trevor"></textarea>
-      <input type="submit" value="Show me the output" class="submit-btn">
-    </form>
-    
-    <div id="output-container"><span>Output</span><div id="output"></div></div>
-  </div>
+  <article>
+    <header class="vertical-align site-header">
+      <div class="vertical-align-content">
+        <h1>Sir Trevor JS</h1>
+        <p>A content agnostic editor used by ITV News</p>
+        <a href="https://github.com/madebymany/sir-trevor-js/downloads" class="btn">Download Sir Trevor JS</a>
+      </div>
+    </header>
+
+    <section class="contained">
+      <div class="twelve-columns example-block">
+
+        <form id="example" class="column span-six">
+          <h2>Input</h2>
+          <textarea class="sir-trevor"></textarea>
+          <input type="submit" value="Show me the output" class="btn output-btn">
+        </form>
+
+        <div id="output-container" class="column span-six">
+          <h2>Output</h2>
+          <pre id="output" class="output"></pre>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <section class="contained twelve-columns">
+        <div class="column span-four">
+          <h3>Features</h3>
+          <ul class="dot-list">
+            <li>Dosen't store any HTML in database</li>
+            <li>Flexible and intuitive interface. Anyone can use it..</li>
+            <li>Easy to extend / customise</li>
+            <li>Drag and drop with block re-ordering</li>
+          </ul>
+        </div>
+        <div class="column span-four">
+          <h3>Block types</h3>
+          <ul class="dot-list">
+            <li>The editor itself is made up of Blocks. The default ones are..</li>
+            <li>Text, Quote, Unordered List, Image (simple) and Gallery</li>
+          </ul>
+        </div>
+        <div class="column span-four">
+          <h3>Licence</h3>
+          <ul class="dot-list"  >
+            <li>Sir Trevor is released under the MIT license:</li>
+            <li>opensource.org/licenses/MIT</li>
+          </ul>
+        </div>
+      </section>
+      <p class="github-link">For a full rundown of what Sir Trevor is, checkout the repository at: <a href="https://github.com/madebymany/sir-trevor-js/" title="Sir trevor on github">https://github.com/madebymany/sir-trevor-js/</a></p>
+    </footer>
+
+    <a href="https://github.com/madebymany/sir-trevor-js/" class="github-logo">Sir tevor on Github</a>
+
+  </article>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="underscore.js" type="text/javascript" charset="utf-8"></script>
-  <script src="sir-trevor.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/sir-trevor.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     $(function(){
-      // Init sir trevor
-      window.editor = new SirTrevor.Editor({ 
+
+      // Init sir trevor. This is all you will need to do to get started
+
+      new SirTrevor.Editor({
         el: $('.sir-trevor'),
 				blockTypes: ['Text', 'Quote', 'Tweet', 'Ul', 'Video']
       });
 
-      var form = $('form'), 
-          output = $('#output');
+      // Everything after this line sets up the output panel
+      // None of this is necessary for normal operation
+      // but it does showcase some of the functionality
 
-      $('form').bind('submit', function(){
+      var output = $('#output');
+      var interactionCallback = function(e) {
 
+        if (e.type === "submit") {
+          e.preventDefault();
+        }
+
+        // Serialises all the input data to each of the SirTrevor instances
+        // (yep, you can have as many as you want on a page)
+        SirTrevor.onBeforeSubmit(false);
+
+        // Take the serialsed JSON from the first instance,
+        // stringify it to make it pretty, then add it to the output panel
         output
           .addClass('highlighted')
-          .html(window.editor.$el.val());
+          .html(
+            JSON.stringify(SirTrevor.instances[0].dataStore, null, 2)
+          );
 
         window.setTimeout(function(){
           output.removeClass('highlighted');
         },500);
 
-        return false;
-      });
+      };
+
+      // debounce the interaction callback function otherwise it will be called
+      // hundreds of times a second.
+      interactionCallback = _.debounce(interactionCallback, 500);
+
+      // detect changes to the instance and change the contents of the output
+      // panel every time someone interacts with SirTrevor
+      $('form#example').delegate(SirTrevor.instances, "propertychange keyup input paste drop submit", interactionCallback)
+      SirTrevor.subscribe("editor/block/handleDrop editor/block/removeBlock editor/block/loadData", interactionCallback);
+
     });
   </script>
 </body>

@@ -1,0 +1,196 @@
+/*
+- Author: Callum Jefferies (callum@madebymany.co.uk)
+- License: MIT-style
+*/
+
+/* Columns */
+
+.twelve-columns,
+.sixteen-columns {
+    overflow: hidden;
+}
+
+.column {
+    overflow: hidden;
+    float: left;
+    padding: .8rem;
+}
+
+.no-gutter {
+    padding: 0 !important;
+}
+
+
+/*
+16x column sizes
+================
+1. 6.25%
+2. 12.5%
+3. 18.75%
+4. 25%
+5. 31.25%
+6. 37.5%
+7. 43.75%
+8. 50%
+9. 56.25%
+10. 62.5%
+11. 68.75%
+12. 75%
+13. 81.25%
+14. 87.5%
+15. 93.75%
+16. 100%
+*/
+
+.sixteen-columns .column {
+  width: 6.25%;
+}
+
+.sixteen-columns .span-two {
+  width: 12.5%;}
+.sixteen-columns .span-three {
+  width: 18.75%;}
+.sixteen-columns .span-four {
+  width: 25%;}
+.sixteen-columns .span-five {
+  width: 31.25%;}
+.sixteen-columns .span-six {
+  width: 37.5%;}
+.sixteen-columns .span-seven {
+  width: 43.75%;}
+.sixteen-columns .span-eight {
+  width: 50%;}
+.sixteen-columns .span-nine {
+  width: 56.25%;}
+.sixteen-columns .span-ten {
+  width: 62.5%;}
+.sixteen-columns .span-eleven {
+  width: 68.75%;}
+.sixteen-columns .span-twelve {
+  width: 75%;}
+.sixteen-columns .span-thirteen {
+  width: 81.25%;}
+.sixteen-columns .span-fourteen {
+  width: 87.5%;}
+.sixteen-columns .span-fifteen {
+  width: 93.75%;}
+.sixteen-columns .span-sixteen {
+  width: 100%;}
+
+
+/*
+12x column sizes
+================
+1. 6.25%
+2. 12.5%
+3. 18.75%
+4. 25%
+5. 31.25%
+6. 37.5%
+7. 43.75%
+8. 50%
+9. 56.25%
+10. 62.5%
+11. 68.75%
+12. 100%
+*/
+
+.twelve-columns .column {
+  width: 8.333333333333334%;
+}
+
+.twelve-columns .span-two {
+  width: 16.666666666666668%;}
+.twelve-columns .span-three {
+  width: 25%;}
+.twelve-columns .span-four {
+  width: 33.333333333333336%;}
+.twelve-columns .span-five {
+  width: 41.66666666666667%;}
+.twelve-columns .span-six {
+  width: 50%;}
+.twelve-columns .span-seven {
+  width: 58.333333333333336%;}
+.twelve-columns .span-eight {
+  width: 66.66666666666667%;}
+.twelve-columns .span-nine {
+  width: 75%;}
+.twelve-columns .span-ten {
+  width: 83.33333333333334%;}
+.twelve-columns .span-eleven {
+  width: 91.66666666666667%;}
+.twelve-columns .span-twelve {
+  width: 100%;}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.contained {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.module-one,
+.module-two,
+.module-three {
+    margin-bottom: 2rem;
+    padding: 3%;
+}
+
+.image {
+    position: relative;
+    padding-bottom: 56.25%;
+    background-color: #555;
+}
+
+.image div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10%;
+    color: #fff;
+}
+
+.module-two {
+    background-color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .module-two .span-three,
+    .module-three .span-three {
+        width: 50%; /* span-six */
+    }
+
+    .module-three .span-six {
+        width: 100%;
+    }
+
+    .module-three-one .span-six {
+        width: 50%;
+    }
+}
+
+@media (max-width: 592px) {
+    .column {
+        padding: .6rem;
+    }
+
+    .module-one,
+    .module-two,
+    .module-three {
+        padding: 1%;
+    }
+
+    .module-one .span-four,
+    .module-two .span-three,
+    .module-three .span-six {
+        width: 100%; /* span-twelve */
+    }
+}
